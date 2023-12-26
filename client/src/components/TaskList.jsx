@@ -13,9 +13,8 @@ import Spinner from './Spinner';
 function TaskList() {
   const dispatch=useDispatch()
   const {loading,error,tasks}=useSelector(state => state.taskReducer)
-  const [organizedTasks,setOrganizedTasks]=useState([])
+  const [organizedTasks,setOrganizedTasks]=useState(null)
   const {user}=useSelector(state => state.authReducer)
-  
 
 
   useEffect(()=>{
@@ -47,7 +46,7 @@ function TaskList() {
 
 
       {
-        organizedTasks.length ?
+        organizedTasks ?
         
         
         <div className='relative grid grid-cols-2  lg:grid-cols-4 gap-8 my-4 min-h-screen'>

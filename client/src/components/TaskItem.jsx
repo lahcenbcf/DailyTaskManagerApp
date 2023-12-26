@@ -27,9 +27,6 @@ function TaskItem(task) {
     if(bounceTime) return ()=>clearTimeout(bounceTime)
   },[pv])
   
-  useEffect(()=>{
-    setFirstRender(false)
-  })
   return (
     <div className='bg-white rounded-xl p-5 flex flex-col gap-4'>
       {loading && <Spinner />}

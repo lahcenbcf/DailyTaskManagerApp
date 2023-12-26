@@ -14,9 +14,9 @@ function Header(){
         setVisible(!visible)
     }
     const dispatch=useDispatch()
-    const closeSession=()=>{
+    const closeSession=(e)=>{
+        e.preventDefault()
         dispatch(logoutUser())
-        window.location.reload()
     }
 
     const {user} = useSelector(state => state.authReducer)
