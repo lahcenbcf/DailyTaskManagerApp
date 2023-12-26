@@ -8,7 +8,6 @@ function TaskItem(task) {
   const {loading,error}=useSelector(state=>state.taskReducer)
   const dispatch=useDispatch()
   const [pv,setPv]=useState(task.progressValue)
-  const [firstRender,setFirstRender]=useState(true)
   const deleteT=(taskId)=>{
       dispatch(deleteTask(taskId))
   }
@@ -19,12 +18,9 @@ function TaskItem(task) {
   }
 
   useEffect(()=>{
-    var bounceTime;
-    if(!firstRender){
-     bounceTime =setTimeout(()=>dispatch(changeProgressValue(pv,task._id)),2000)
+     const bounceTime =setTimeout(()=>dispatch(changeProgressValue(pv,task._id)),2000)
     
-    }
-    if(bounceTime) return ()=>clearTimeout(bounceTime)
+    return ()=>clearTimeout(bounceTime)
   },[pv])
   
   return (
