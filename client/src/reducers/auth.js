@@ -66,6 +66,11 @@ export const authReducer=(state=initialState,action)=>{
                 loading:false,
                 userPic:action.payload
             }
+        case INIT_STATE:
+            return {
+                ...state,
+                error:""
+            }
         default:
             return state
     }

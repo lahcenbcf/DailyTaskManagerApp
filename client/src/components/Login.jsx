@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { loginUser } from '../actions/auth';
 import Spinner from './Spinner';
-
+import { INIT_STATE } from '../constants/auth';
 function Login() {
   const [visible,setVisible]=useState(false)
   const navigate=useNavigate()
@@ -50,10 +50,16 @@ function Login() {
   const handleVisible=()=>setVisible(!visible)
   
   
-  useEffect(()=>{
+  /*useEffect(()=>{
       if(success) navigate("/dashboard")
   },[success])
-  
+  */
+
+  useEffect(()=>{
+    dispatch({
+      type:INIT_STATE
+    })
+  },[dispatch])
   return (
     <div className='px-4 flex items-center justify-center bg-bg-color h-screen'>
 

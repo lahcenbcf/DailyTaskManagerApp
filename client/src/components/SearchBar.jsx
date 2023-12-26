@@ -22,9 +22,6 @@ function SearchBar() {
     }
   },[keyword])
 
-  useEffect(()=>{
-    setFirstRender(false)
-  })
   return (
     <div className="flex bg-inherit justify-center items-center rounded-md border-2 border-primary">
           <input type="search" value={keyword} onChange={handleChange} placeholder="search" className="py-3 px-5 bg-inherit outline-none" />

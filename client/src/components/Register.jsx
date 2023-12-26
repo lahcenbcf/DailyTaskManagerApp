@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux"
 import {registerUser} from "../actions/auth"
 import Spinner from './Spinner';
+import { INIT_STATE } from '../constants/auth';
 
 function Register() {
   const [visible,setVisible]=useState(false)
@@ -15,6 +16,7 @@ function Register() {
     password:""
   })
   const navigate=useNavigate()
+
 
   const dispatch=useDispatch()
   const {loading,success,error}=useSelector(store => store.authReducer)
@@ -60,7 +62,11 @@ function Register() {
 useEffect(()=>{
   if(success) navigate("/login")
 },[success])
-
+  useEffect(()=>{
+    dispatch({
+      type:INIT_STATE
+    })
+  },[dispatch])
   return (
     <div className='px-4 flex items-center justify-center bg-bg-color h-screen'>
     {

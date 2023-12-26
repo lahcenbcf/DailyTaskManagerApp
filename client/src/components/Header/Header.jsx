@@ -54,14 +54,14 @@ function Header(){
             {/* our listItems */}
             {
                 visible && ( !user?._id ? 
-                <ul className="absolute right-4 top-16 shadow-lg list-none flex flex-col items-center px-6 py-4 rounded-md bg-white">
-                    <Link to={"/register"} className="font-meduim text-slate-400 hover:text-primary text-xl" onClick={handleVisible}>register</Link>
-                    <Link to={"/login"} className="font-meduim text-slate-400 hover:text-primary text-xl" onClick={handleVisible}>login</Link>
+                <ul className="absolute right-14 top-3 shadow-lg list-none flex flex-col items-center px-6 py-4 rounded-md bg-slate-500 md:hidden">
+                    <Link to={"/register"} className="font-meduim text-white hover:text-primary text-xl" onClick={handleVisible}>register</Link>
+                    <Link to={"/login"} className="font-meduim text-white hover:text-primary text-xl" onClick={handleVisible}>login</Link>
                 </ul>
                  :
-                 <ul className="absolute right-4 top-16 shadow-lg list-none flex flex-col items-center px-6 py-4 rounded-md bg-white">
-                 <Link className="absolute right-14 top-8 md:hidden font-meduim text-slate-400 hover:text-primary text-xl" to={"/myProfile"} >profile</Link>
-                 <Link className="absolute right-14 top-8 md:hidden font-meduim text-slate-400 hover:text-primary text-xl" onClick={closeSession} >logout</Link>   
+                 <ul className="absolute right-14 top-3 shadow-lg list-none flex flex-col items-center px-6 py-4 rounded-md bg-slate-500 md:hidden">
+                 <Link className="font-meduim text-white hover:text-primary text-xl" to={"/dashboard/profile"} >profile</Link>
+                 <Link className="font-meduim text-white hover:text-primary text-xl" onClick={closeSession} >logout</Link>   
                  </ul>
                 )
                 }

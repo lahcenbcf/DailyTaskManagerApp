@@ -1,6 +1,7 @@
 import {AUTH_FAILED,AUTH_LOADING,AUTH_SUCCESS,GET_USER_PIC, REGISTER_SUCCESS,CLEAR_USER_CACHE, UPDATE_USER_INFO,UPDATE_USER_PICTURE} from '../constants/auth'
 import axios from "axios"
-import history from '../history'
+
+
 export const baseUrl=axios.create({
     baseURL:"http://127.0.0.1:5000"
 })
@@ -16,7 +17,8 @@ export const loginUser=(data)=>async(dispatch)=>{
         })
         if(!res?.data?.message){
             dispatch({
-                type:AUTH_SUCCESS
+                type:AUTH_SUCCESS,
+                payload:res.data
             })
             //save in localStorage
             localStorage.setItem("user",JSON.stringify({
@@ -28,7 +30,8 @@ export const loginUser=(data)=>async(dispatch)=>{
                 _id:res.data._id
             }))
             
-            history.push("/")
+            window.location.href="/dashboard"
+
         }else{
             dispatch({
                 type:AUTH_FAILED,
@@ -64,7 +67,6 @@ export const registerUser=(data)=>async(dispatch)=>{
                 type:REGISTER_SUCCESS
             })
             //go to login page
-            history.push("/login")
         }
     } catch (error) {
         dispatch({
@@ -147,6 +149,7 @@ export const uploadUserPhoto=(userId,imagePath)=>async(dispatch)=>{
                     "Content-Type":"application/json"
                 }
             })
+            
             if(res.data?.message){
                 dispatch({
                     type:AUTH_FAILED,
