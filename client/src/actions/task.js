@@ -160,7 +160,7 @@ export const changeProgressValue=(newPv,taskId)=>async(dispatch)=>{
 }
 
 
-export const serachTask=(keyword,userId)=>async(dispatch)=>{
+export const searchTask=(keyword,userId)=>async(dispatch)=>{
     try {
         dispatch({
             type:TASK_PENDING

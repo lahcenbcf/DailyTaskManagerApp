@@ -14,6 +14,7 @@ export const taskReducer=(state=initialState,action)=>{
         case INIT_STATE:
             return {
                 ...state,
+                loading:false,
                 success:false
             }
         case TASK_PENDING:

@@ -1,34 +1,31 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { IoIosSearch } from "react-icons/io";
-import { useDispatch, useSelector } from "react-redux";
-import { serachTask } from "../actions/task";
+import { useDispatch} from "react-redux";
+import { searchTask } from "../actions/task";
+import { useDebounce } from "../customHooks/useDebounce";
+
 function SearchBar() {
-  const [keyword,setKeyword]=useState("")
-  const [firstRender,setFirstRender]=useState(true)
-  const {user}=useSelector(state => state.authReducer)
-  const handleChange=(e)=>{
-    setKeyword(e.target.value)
-  }
+  const [keyword, setKeyword] = useState("");
 
-  const dispatch = useDispatch()
-  useEffect(()=>{
-    if(!firstRender){
-      const waitTime=2000;
-      const bounceTime=setTimeout(()=>{
-          dispatch(serachTask(keyword,user._id))
-      },waitTime)
+  const handleChange = (e) => {
+    setKeyword(e.target.value);
+  };
 
-      return ()=>clearTimeout(bounceTime)
-    }
-  },[keyword])
+  const dispatch = useDispatch();
+  useDebounce(keyword,searchTask,dispatch)
 
   return (
     <div className="flex bg-inherit justify-center items-center rounded-md border-2 border-primary">
-          <input type="search" value={keyword} onChange={handleChange} placeholder="search" className="py-3 px-5 bg-inherit outline-none" />
-          <IoIosSearch size={20} className="h-full mx-2" />
+      <input
+        type="search"
+        value={keyword}
+        onChange={handleChange}
+        placeholder="search"
+        className="py-3 px-5 bg-inherit outline-none"
+      />
+      <IoIosSearch size={20} className="h-full mx-2" />
     </div>
-    
-  )
+  );
 }
 
-export default SearchBar
+export default SearchBar;
