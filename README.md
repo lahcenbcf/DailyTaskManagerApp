@@ -22,6 +22,19 @@ Javascript, HTML, CSS...
 MongoDB,ExpressJS
 NodeJs
 Redux
+Next js
+Zustand
+
+
+# visit our ecommerce application
+
+our application (frontend is deployed on vercel via and our backend on render.com )
+
+
+## Demo
+
+https://daily-task-manager-app.vercel.app/
+
 
 ## Screenshots
 
